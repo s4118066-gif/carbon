@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  
+  --color-eco-bg: #05140e;
+  --color-eco-card: #0c231c;
+  --color-eco-card-light: #123127;
+  --color-eco-border: #184435;
+  --color-eco-accent: #10b981;
+  --color-eco-accent-glow: rgba(16, 185, 129, 0.15);
+  --color-eco-text-muted: #8ca39a;
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 4s ease-in-out infinite;
+  --animate-sway: sway 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.05); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: var(--color-eco-bg);
+    color: #f3f4f6;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #05140e;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #184435;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #10b981;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: rgba(12, 35, 28, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(24, 68, 53, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 10px 40px -10px rgba(16, 185, 129, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .glow-green {
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.3);
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+  }
+  
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(24, 68, 53, 0.15) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(24, 68, 53, 0.15) 1px, transparent 1px);
+  }
+}
