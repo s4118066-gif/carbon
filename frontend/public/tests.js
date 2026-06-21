@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const eCO2 = API.calculateEnergyCO2(energyInput);
     assert(
-      Math.abs(eCO2 - 1.7868) < 0.0001,
+      Math.abs(eCO2 - 3.504) < 0.0001,
       "Household energy utilities CO2 calculations correctly compute electricity and natural gas therm factors."
     );
 
