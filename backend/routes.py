@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, Depends, Header
 from pydantic import BaseModel, EmailStr
 from typing import Optional, List, Dict
 import datetime
-from .config import get_db, get_gemini_model
+from backend.config import get_db, get_gemini_model
 from firebase_admin import auth
 
 router = APIRouter()

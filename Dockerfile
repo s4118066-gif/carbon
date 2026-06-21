@@ -29,6 +29,7 @@ COPY backend/ ./backend/
 COPY --from=frontend-builder /app/frontend/dist ./frontend/dist
 
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
 
 # Cloud Run sets the PORT environment variable. We dynamically default to 8080.
 EXPOSE 8080
