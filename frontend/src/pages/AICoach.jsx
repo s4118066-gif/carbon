@@ -199,7 +199,7 @@ export default function AICoach({ userProfile, onProfileUpdate }) {
         </div>
 
         {/* Messages Stream */}
-        <div className="flex-1 overflow-y-auto p-5 space-y-4">
+        <div className="flex-1 overflow-y-auto p-5 space-y-4" aria-live="polite">
           {messages.map((msg, index) => (
             <div 
               key={index} 

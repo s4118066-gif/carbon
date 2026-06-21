@@ -9,6 +9,7 @@ import ReceiptAnalyzer from './pages/ReceiptAnalyzer';
 import Leaderboard from './pages/Leaderboard';
 import Analytics from './pages/Analytics';
 import SettingsPage from './pages/Settings';
+import EcoMaps from './pages/EcoMaps';
 import { Leaf, Sparkles, Loader2, Lock, Mail, User } from 'lucide-react';
 
 export default function App() {
@@ -93,6 +94,8 @@ export default function App() {
         return <Leaderboard userProfile={userProfile} onProfileUpdate={handleProfileUpdate} />;
       case 'analytics':
         return <Analytics userProfile={userProfile} />;
+      case 'maps':
+        return <EcoMaps />;
       case 'settings':
         return <SettingsPage userProfile={userProfile} onProfileUpdate={handleProfileUpdate} />;
       default:

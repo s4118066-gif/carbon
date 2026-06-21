@@ -95,3 +95,39 @@
                       linear-gradient(to bottom, rgba(24, 68, 53, 0.15) 1px, transparent 1px);
   }
 }
+
+/* Google Translate Widget Dark Mode Integration */
+.goog-te-gadget {
+  font-family: 'Outfit', sans-serif !important;
+  color: #8ca39a !important;
+}
+.goog-te-gadget-simple {
+  background-color: rgba(5, 20, 14, 0.6) !important;
+  border: 1px solid rgba(24, 68, 53, 0.5) !important;
+  padding: 4px 8px !important;
+  border-radius: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+.goog-te-gadget-simple img {
+  display: none !important;
+}
+.goog-te-menu-value {
+  color: #f3f4f6 !important;
+  font-size: 11px !important;
+  margin: 0 !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+}
+.goog-te-menu-value span {
+  color: #f3f4f6 !important;
+}
+.goog-te-banner-frame {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   LayoutDashboard, 
   Calculator, 
@@ -12,7 +12,8 @@ import {
   Menu, 
   X, 
   Leaf, 
-  Award 
+  Award,
+  MapPin
 } from 'lucide-react';
 
 export default function Sidebar({ currentPage, setCurrentPage, userProfile, onLogout }) {
@@ -26,6 +27,7 @@ export default function Sidebar({ currentPage, setCurrentPage, userProfile, onLo
     { id: 'ocr', label: 'Bill Analyzer', icon: FileText },
     { id: 'leaderboard', label: 'Eco Challenges', icon: Trophy },
     { id: 'analytics', label: 'Analytics & Reports', icon: BarChart3 },
+    { id: 'maps', label: 'Eco Locations', icon: MapPin },
     { id: 'settings', label: 'Settings', icon: Settings },
   ];
 
@@ -49,6 +51,34 @@ export default function Sidebar({ currentPage, setCurrentPage, userProfile, onLo
     setCurrentPage(id);
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    // Dynamic Google Translate Widget Loader
+    const initTranslate = () => {
+      if (window.google && window.google.translate) {
+        try {
+          new window.google.translate.TranslateElement(
+            { pageLanguage: 'en', layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE },
+            'google_translate_element'
+          );
+        } catch (e) {
+          console.warn("Google Translate already initialized or failed to bind", e);
+        }
+      }
+    };
+
+    if (!window.googleTranslateElementInit) {
+      window.googleTranslateElementInit = initTranslate;
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      script.async = true;
+      document.body.appendChild(script);
+    } else {
+      // Re-initialize widget if DOM changes/re-renders
+      initTranslate();
+    }
+  }, []);
 
   return (
     <>
@@ -152,7 +182,12 @@ export default function Sidebar({ currentPage, setCurrentPage, userProfile, onLo
         </div>
 
         {/* Sidebar Footer / Logout */}
-        <div className="p-4 border-t border-eco-border bg-eco-bg-dark/20">
+        <div className="p-4 border-t border-eco-border bg-eco-bg-dark/20 space-y-4">
+          <div className="px-2 py-1 bg-eco-bg-dark/40 border border-eco-border/40 rounded-xl">
+            <span className="text-[10px] text-eco-accent uppercase font-bold tracking-wider block mb-1.5">Language</span>
+            <div id="google_translate_element" className="google-translate-dropdown text-xs"></div>
+          </div>
+
           <button
             onClick={onLogout}
             className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-400 hover:text-white hover:bg-red-950/40 border border-transparent hover:border-red-900/30 transition-all focus:outline-none focus:ring-2 focus:ring-red-500"
